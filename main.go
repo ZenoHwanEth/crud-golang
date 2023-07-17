@@ -1,5 +1,9 @@
 package main
 
+import (
+	"github.com/gorilla/mux"
+)
+
 type Movie struct {
 	ID        string    `json:"id"`
 	Isbn      string    `json:"isbn"`
@@ -12,6 +16,10 @@ type Director struct {
 	Lastname  string `json:"lastname"`
 }
 
-func main() {
+var movies []Movie
 
+func main() {
+	r := mux.NewRouter()
+
+	r.HandleFunc("/movies", getMovies).Methods("GET")
 }
